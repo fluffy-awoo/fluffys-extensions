@@ -13,17 +13,55 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check if image should be updated
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "update=true" >> $GITHUB_OUTPUT
+            echo "Manually triggered, building."
+          elif git diff --quiet HEAD~1 -- '*.py' '*.json' Dockerfile; then
+            echo "update=false" >> $GITHUB_OUTPUT
+            echo "No changes detected, skipping."
+          else
+            echo "update=true" >> $GITHUB_OUTPUT
+            echo "Changes detected, building."
+          fi
 
       - name: Login to Docker Hub
+        if: steps.check.outputs.update == 'true'
         uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Free disk space
+        if: steps.check.outputs.update == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          df -h
+
+          for path in /usr/share/dotnet /opt/ghc /usr/local/lib/android /usr/local/share/boost /usr/local/.ghcup; do
+            if [ -e "$path" ]; then
+              sudo rm -rf "$path"
+            fi
+          done
+
+          if command -v docker >/dev/null 2>&1; then
+            sudo docker system prune -af
+          fi
+
+          df -h
+
       - name: Set up Docker Buildx
+        if: steps.check.outputs.update == 'true'
         uses: docker/setup-buildx-action@v4
 
       - name: Build and push Docker image
+        if: steps.check.outputs.update == 'true'
         uses: docker/build-push-action@v7
         with:
           context: .
