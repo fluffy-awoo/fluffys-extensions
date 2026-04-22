@@ -1,0 +1,59 @@
+{
+  "install_root": "/run/challenge/share/code/extensions",
+  "extensions": [
+    {
+      "id": "catppuccin.catppuccin-vsc",
+      "version": "3.18.1",
+      "target_platform": "universal",
+      "folder": "catppuccin.catppuccin-vsc-3.18.1",
+      "source": "open-vsx",
+      "url": "https://open-vsx.org/api/Catppuccin/catppuccin-vsc/3.18.1/file/Catppuccin.catppuccin-vsc-3.18.1.vsix",
+      "sha256": "2a98799d081b45280356aa369f6797a105e1ee06b4a3cfe8364432a126711d9a"
+    },
+    {
+      "id": "catppuccin.catppuccin-vsc-icons",
+      "version": "1.26.0",
+      "target_platform": "universal",
+      "folder": "catppuccin.catppuccin-vsc-icons-1.26.0",
+      "source": "open-vsx",
+      "url": "https://open-vsx.org/api/Catppuccin/catppuccin-vsc-icons/1.26.0/file/Catppuccin.catppuccin-vsc-icons-1.26.0.vsix",
+      "sha256": "57566136d0a8ba8d040eb6e5be866c88ccbb04f3d219d3a7e52a19978900ff3d"
+    },
+    {
+      "id": "ms-vscode.cpptools",
+      "version": "1.20.5",
+      "target_platform": "linux-x64",
+      "folder": "ms-vscode.cpptools-1.20.5",
+      "source": "visualstudio-marketplace",
+      "url": "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-vscode/vsextensions/cpptools/1.20.5/vspackage?targetPlatform=linux-x64",
+      "sha256": "6ab4c1b77516039ce8a3474bd38e12c7f353d4b512efa5df1884bde8d38cbc99",
+      "executable_paths": [
+        "LLVM/bin/clang-format",
+        "LLVM/bin/clang-tidy",
+        "bin/cpptools",
+        "bin/cpptools-srv",
+        "bin/cpptools-wordexp",
+        "bin/libc.so",
+        "debugAdapters/bin/OpenDebugAD7"
+      ]
+    },
+    {
+      "id": "ms-python.python",
+      "version": "2024.14.1",
+      "target_platform": "universal",
+      "folder": "ms-python.python-2024.14.1-universal",
+      "source": "open-vsx",
+      "url": "https://open-vsx.org/api/ms-python/python/2024.14.1/file/ms-python.python-2024.14.1.vsix",
+      "sha256": "e5f2f3afd587bf302fb4c481b1e6a2fb604ea08b3ce9d82ab2c1251e0a51060c"
+    },
+    {
+      "id": "oderwat.indent-rainbow",
+      "version": "8.3.1",
+      "target_platform": "universal",
+      "folder": "oderwat.indent-rainbow-8.3.1",
+      "source": "open-vsx",
+      "url": "https://open-vsx.org/api/oderwat/indent-rainbow/8.3.1/file/oderwat.indent-rainbow-8.3.1.vsix",
+      "sha256": "ef9545b7f62f91c69ae79356786e37ca78a20d2ac3e409eace107c8c9a8c8b99"
+    }
+  ]
+}
